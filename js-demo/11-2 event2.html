@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      border: 1px solid;
+      margin: 1em 0;
+    }
+
+    a {
+      display: block;
+      padding: 0.5em 0;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="btn1">按钮</button>
+  <div id="div1">
+    <a>a1</a>
+    <a>a2</a>
+    <a>a3</a>
+    <a>a4</a>
+    <button>加载更多</button>
+  </div>
+
+  <script>
+    // 通用的事件绑定函数
+    function bindEvent(element, type, selector, fn) {
+      if (!fn) {
+        fn = selector,
+          selector = null
+      }
+      element.addEventListener(type, event => {
+        const target = event.target
+        // 需要代理
+        if (selector) {
+          if (target.matches(selector)) {
+            fn.call(target, event) // 这里用 call 应该没太大意义
+          }
+        }
+        // 不需要代理
+        else {
+          fn.call(target, event)
+        }
+
+      }, false)
+    }
+
+    bindEvent(document.body, 'click', 'A', function(event) {
+      event.preventDefault();
+      // 这里如果用 this，那么【事件绑定函数】中就必须用 call 来修改 this
+      // 当前 function 也不能用箭头函数，否则 this 指向 window
+      console.log(this.innerHTML); 
+    })
+  </script>
+</body>
+
+</html>

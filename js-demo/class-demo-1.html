@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    class Student {
+      constructor(name, number) {
+        this.name = name
+        this.number = number
+      }
+
+      sayHi() {
+        console.log(`姓名 ${this.name}，学号 ${this.number}`);
+      }
+    }
+
+    const xialuo = new Student('夏洛', 100)
+    console.log(xialuo.name);
+    console.log(xialuo.number);
+    xialuo.sayHi()
+  </script>
+</body>
+
+</html>

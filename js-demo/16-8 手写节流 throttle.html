@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #div1 {
+      border: 1px solid #ccc;
+      width: 200px;
+      height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="div1" draggable="true">可拖拽</div>
+
+  <script>
+    const div1 = document.getElementById('div1')
+
+    let timer = null
+    div1.addEventListener('drag', function (e) {
+      // 定时任务没有执行完之前，不再执行
+      if (timer) return
+      timer = setTimeout(() => {
+        console.log(e.offsetX, e.offsetY);
+        timer = null
+      }, 200)
+    })
+  </script>
+</body>
+
+</html>

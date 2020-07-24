@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function loadImg(src) {
+      return new Promise((resolve, reject) => {
+        const img = document.createElement('img')
+        img.onload = function () {
+          resolve(img)
+        }
+        img.onerror = function (error) {
+          reject(error)
+        }
+        img.src = src
+      })
+    }
+
+    const url1 = 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=49728619,690982024&fm=11&gp=0.jpg'
+    const url2 = 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2129136233,3522494591&fm=26&gp=0.jpg'
+
+    // loadImg(url1).then(img => {
+    //   console.log(img.src);
+    //   return loadImg(url2)
+    // })
+    //   .then(img => {
+    //     console.log(img.src);
+    //   })
+    //   .catch(error => console.log(error))
+    !(async function() {
+      const img1 = await loadImg(url1)
+      console.log(img1.src);
+
+      const img2 = await loadImg(url2)
+      console.log(img2.src);
+    })()
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function muli(num) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(num * num)
+        }, 1000)
+      })
+    }
+
+    const nums = [1, 2, 3]
+
+    // forEach 是同步循环，直接循环了3遍，1s后，3个结果都出来了
+    nums.forEach(async (i) => {
+      const result = await muli(i)
+      console.log(result);
+    })
+
+    // 结果一个一个地出来的的
+    !(async function () {
+      for (let i of nums) {
+        const result = await muli(i)
+        console.log(result);
+      }
+    })()
+  </script>
+</body>
+
+</html>

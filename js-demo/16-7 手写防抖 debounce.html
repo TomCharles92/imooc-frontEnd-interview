@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <label for="name">用户名</label>
+    <input type="text" id="name">
+  </div>
+  <script>
+    const input1 = document.getElementById('name')
+
+    let timer = null
+    input1.addEventListener('keyup', function(e) {
+      // 快速点击的时候，清除前一个 setTimeout
+      if(timer) {
+        clearTimeout(timer)
+      }
+      timer = setTimeout(() => {
+        console.log(input1.value);
+        timer = null // 本次 setTimeout 已经执行完成，不用再 clearTimeout
+      }, 500)
+    })
+  </script>
+</body>
+</html>

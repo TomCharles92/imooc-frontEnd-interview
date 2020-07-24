@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function test() {
+      console.log('test 开始执行');
+      console.log(this);
+      console.log(...arguments);
+    }
+
+    test(); // window
+    test.call({ x: 10 })
+
+    Function.prototype.mycall = function () {
+      // 分离出第一个参数作为 context
+      const args = [...arguments]
+      let context = args.shift();
+      if (context === null || context === undefined) context = window
+
+      // 将 this 代表的 函数，作为 context 的属性
+      // 这样函数的 this 就指向 context
+      context.fn = this
+
+      // 执行函数
+      const result = context.fn(args)
+
+      // 删除 context 的函数属性
+      Reflect.deleteProperty(context, 'fn')
+
+      // 返回运行结果
+      return result
+    }
+
+    test.mycall({ x: 20 }, 5, 6)
+
+    test.mycall(null, 2, 4)
+
+  </script>
+</body>
+
+</html>

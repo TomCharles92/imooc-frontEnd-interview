@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #div1 {
+      border: 1px solid #ccc;
+      width: 200px;
+      height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="div1" draggable="true">可拖拽</div>
+
+  <script>
+    const div1 = document.getElementById('div1')
+
+    // 利用 ES6 的剩余参数和数组的解构
+    // 来处理 throttle 传参的问题
+    function throttle_es6(fn, delay = 200) {
+      let timer = null
+      return function (...args) { // 剩余参数
+        if (timer) return
+        timer = setTimeout(() => {
+          fn(...args) // 数组解构
+          timer = null
+        }, delay)
+      }
+    }
+
+    // 利用 ES5 的语法，arguments + apply 来处理参数
+    function throttle_es5_apply(fn, delay = 200) {
+      let timer = null
+      return function () {
+        if (timer) return
+        timer = setTimeout(() => {
+          fn.apply(this, arguments) // arguments + apply 来处理参数
+          timer = null
+        }, delay)
+      }
+    }
+
+    // throttle 函数处理参数 e
+    // e 传递给了 throttle 返回的函数
+    div1.addEventListener('drag', throttle_es5_apply(function (e) {
+      console.log(e.offsetX, e.offsetY);
+    }))
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <p>一段文字1</p>
+  <p>一段文字2</p>
+  <p>一段文字3</p>
+
+  <script>
+    class jQuery {
+      constructor(selector) {
+        const result = document.querySelectorAll(selector)
+        const { length } = result
+        for (let i = 0; i < length; i++) {
+          this[i] = result[i]
+        }
+        this.length = length
+        this.selector = selector
+      }
+
+      get(index) {
+        return this[index]
+      }
+
+      each(fn) {
+        for (let i = 0; i < this.length; i++) {
+          const elem = this[i]
+          fn(elem)
+        }
+      }
+
+      on(type, fn) {
+        return this.each(elem => {
+          elem.addEventListener(type, fn, false)
+        })
+      }
+
+      // 扩展很多 DOM API
+    }
+
+    // 功能测试
+    // const p = new jQuery('p') 
+    // p[1]
+    // p.each((elem) => console.log(elem))
+    // p.on('click', () => console.log('click事件'))
+
+    // 插件
+    jQuery.prototype.dialog = function(info) {
+      console.log('dialog');
+    }
+
+    // 造轮子、复写
+    class myJQuery extends jQuery {
+      constructor(selector) {
+        super(selector)
+      }
+      // 扩展自己的方法
+      addClass(className) {
+        console.log('myJQuery 的 addClass 方法');
+      }
+
+      style(data) {
+
+      }
+    }
+  </script>
+</body>
+
+</html>

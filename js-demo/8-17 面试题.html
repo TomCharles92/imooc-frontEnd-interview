@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    async function async1() {
+      console.log('async1 start'); // 2
+      await async2()
+
+      // await 后面的都作为异步任务 -- 微任务
+      console.log('async1 end'); // 6
+    }
+
+    async function async2() {
+      console.log('async2'); // 3
+    }
+
+    console.log('script start'); // 1
+
+    setTimeout(function () { // 宏任务 setTimeout
+      console.log('setTimeout'); // 8
+    }, 0)
+
+    async1()
+
+    new Promise(function (resolve) {
+      console.log('promise1'); // 4
+      resolve()
+    }).then(function () { // 微任务
+      console.log('promise2'); // 7
+    })
+
+    console.log('script end'); // 5
+
+    // 同步代码执行完成后，Event Loop - Call Stack 清空
+    // 执行微任务
+    // 尝试 DOM 渲染
+    // 触发 Event Loop，执行宏任务
+
+  </script>
+</body>
+
+</html>

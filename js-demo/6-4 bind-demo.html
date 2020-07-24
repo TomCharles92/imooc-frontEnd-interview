@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function fn1(a, b, c) {
+      console.log('this: ', this);
+      console.log(a, b, c);
+      return 'this is fn1'
+    }
+
+    // 原生 bind 函数
+    const fn2 = fn1.bind({ x: 100 }, 10, 20, 30)
+    console.log(fn2());
+
+    Function.prototype.bind1 = function () {
+      // 将参数转为数组
+      // const args = Array.prototype.slice.call(arguments)
+      const args = [...arguments]
+      // 数组第一个参数为需要指向的 this，剩余的作为参数传入
+      const newThis = args.shift()
+      // 取得 this
+      const self = this
+      return function () {
+        // 执行原函数，并返回结果
+        // apply 使用数组作为参数
+        return self.apply(newThis, args)
+      }
+    }
+
+    const fn3 = fn1.bind1({ x: 100 }, 10, 20, 30)
+    console.log(fn3());
+  </script>
+</body>
+
+</html>

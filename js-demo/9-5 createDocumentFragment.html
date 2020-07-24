@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // 创建一个文档片段，此时还没有插入到 DOM 树中
+    const frag = document.createDocumentFragment()
+
+    // 执行插入
+    const ul = document.createElement('ul')
+    frag.appendChild(ul)
+    for (let x = 0; x < 10; x++) {
+      const li = document.createElement('li')
+      li.innerHTML = 'List Item' + x
+      ul.appendChild(li)
+    }
+    
+    // 都完成之后，再插入到 DOM 树中
+    document.body.appendChild(frag)
+  </script>
+</body>
+
+</html>

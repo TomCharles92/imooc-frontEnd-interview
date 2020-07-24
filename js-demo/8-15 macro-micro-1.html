@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+
+<body>
+  <h1>JS宏任务与微任务</h1>
+  <div id="container"></div>
+
+  <script>
+    const $p1 = $('<p>一段文字</p>')
+    const $p2 = $('<p>一段文字</p>')
+    const $p3 = $('<p>一段文字</p>')
+    $('#container')
+      .append($p1)
+      .append($p2)
+      .append($p3)
+
+    console.log('length: ', $('#container').children().length);
+    alert('本次 call stack 结束，DOM 结构已更新，但尚未触发渲染')
+  </script>
+</body>
+
+</html>

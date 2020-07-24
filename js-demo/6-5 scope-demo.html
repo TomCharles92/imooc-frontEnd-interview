@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 题目：创建 10 个 <a> 标签，点击的时候弹出来对应的序号
+    // let i, a
+    // for (i = 0; i < 10; i++) {
+    //   a = document.createElement('a')
+    //   a.innerHTML = i + '<br>'
+    //   a.addEventListener('click', function (e) {
+    //     e.preventDefault()
+    //     alert(i)
+    //   })
+    //   document.body.appendChild(a)
+    // }
+
+    // 方法一：for + let
+    // let a
+    // for (let i = 0; i < 10; i++) {
+    //   a = document.createElement('a')
+    //   a.innerHTML = i + '<br>'
+    //   a.addEventListener('click', function (e) {
+    //     e.preventDefault()
+    //     alert(i)
+    //   })
+    //   document.body.appendChild(a)
+    // }
+
+    // 方法二：闭包
+    let i, a
+    for (i = 0; i < 10; i++) {
+      (function fn(i) {
+        a = document.createElement('a')
+        a.innerHTML = i + '<br>'
+        a.addEventListener('click', function (e) {
+          e.preventDefault()
+          alert(i)
+        })
+        document.body.appendChild(a)
+      })(i)
+    }
+  </script>
+</body>
+
+</html>
