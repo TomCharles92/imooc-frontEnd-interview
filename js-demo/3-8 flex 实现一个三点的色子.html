@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #container {
+      width: 200px;
+      height: 200px;
+      padding: 10px;
+      border: 1px solid;
+      border-radius: 5px;
+
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .item {
+      width: 40px;
+      height: 40px;
+      border: 1px solid lightslategray;
+      border-radius: 50%;
+      background-color: lightslategray;
+    }
+
+    .item:nth-child(2) {
+      align-self: center;
+    }
+
+    .item:nth-child(3) {
+      align-self: flex-end;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+</body>
+</html>

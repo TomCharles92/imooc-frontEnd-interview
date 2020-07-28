@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      height: 200px;
+      border: 1px solid;
+      margin: 20px 0;
+    }
+
+    .relative {
+      position: relative;
+    }
+
+    .item {
+      width: 100px;
+      height: 100px;
+      border: 1px solid;
+    }
+
+    /* inline 垂直居中 */
+    .container01 {
+      line-height: 200px;
+    }
+
+    /* block 垂直居中 */
+    .container02 .item {
+      position: absolute;
+      top: 50%;
+      margin-top: -50px;
+    }
+
+    /* 使用了 CSS3，可能有兼容性的问题 */
+    .container03 .item {
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+
+    /* 兼容性最好 */
+    .container04 .item {
+      position: absolute;
+      /* left: 0;
+      right: 0; */
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container container01">
+    <span>一段文字</span>
+  </div>
+
+  <div class="container container02 relative">
+    <div class="item">一段文字</div>
+  </div>
+
+  <div class="container container03 relative">
+    <div class="item">一段文字</div>
+  </div>
+
+  <div class="container container04 relative">
+    <div class="item">一段文字</div>
+  </div>
+</body>
+</html>

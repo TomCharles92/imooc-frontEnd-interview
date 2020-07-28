@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .common {
+      width: 200px;
+      height: 100px;
+      padding: 5px;
+      border: 1px solid;
+      margin: 5px;
+      background-color: aqua;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="div1" class="common"></div>
+  <div id="div2" class="common" style="box-sizing: border-box;"></div>
+
+  <script>
+    const div1 = document.getElementById('div1')
+    const div2 = document.getElementById('div2')
+    // offsetWidth: 盒模型宽度
+
+    // box-sizing: content-box 默认值情况下，width 为内容宽度 content
+    // offsetWidth = width(content) + padding*2 + border*2
+
+    // box-sizing: border-box，width = content + padding*2 + border*2
+    // 所以 offsetWidth = width
+    console.log('div1: ', div1.offsetWidth);
+    console.log('div2: ', div2.offsetWidth);
+  </script>
+</body>
+
+</html>

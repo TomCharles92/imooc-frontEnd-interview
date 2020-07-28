@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      margin: 10px;
+      padding: 20px;
+      border: 1px solid;
+      height: 100px;
+    }
+
+    .item {
+      background-color: lightskyblue;
+      width: 200px;
+    }
+
+    #container01 {
+      text-align: center;
+    }
+
+    #container02 .item {
+      margin: auto;
+    }
+
+    #container03 {
+      position: relative;
+    }
+
+    #container03 .item {
+      position: absolute;
+      left: 50%;
+      margin-left: -100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" id="container01">
+    <span>一段文字</span>
+  </div>
+
+  <div class="container" id="container02">
+    <div class="item">一段文字</div>
+  </div>
+
+  <div class="container" id="container03">
+    <div class="item">一段文字</div>
+  </div>
+</body>
+
+</html>
