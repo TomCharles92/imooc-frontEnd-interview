@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const arr = [10, 20, 30, 40, 50]
+
+    // slice 纯函数
+    // 参数 [start, end)
+    console.log('slice 区域');
+    console.log(arr.slice()); // 相当于复制
+    console.log(arr.slice(1, 4));
+    console.log(arr.slice(-2)); // 最后2个
+
+    // splice 不是纯函数
+    // 参数 [start, length, 插入项...
+    // 操作原数组，返回剪切出来的数组
+    console.log('splice 区域');
+    // const spliceResult = arr.splice(1, 2, 'a', 'b', 'c') // 剪去 20 30，再插入
+    // const spliceResult = arr.splice(1, 2) // 剪去 2 项
+    const spliceResult = arr.splice(1, 0, 'a', 'b', 'c') // 插入，在第1项之前插入
+    console.log(spliceResult, arr);
+  </script>
+</body>
+</html>
